@@ -1,53 +1,116 @@
 import 'package:flutter/material.dart';
+import 'package:todo/pages/home.page.dart';
 
-class LoginPage extends StatefulWidget {
+class LoginPage extends StatelessWidget {
   @override
-  _LoginPageState createState() => _LoginPageState();
-}
-
-class _LoginPageState extends State<LoginPage> {
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext) {
     return Scaffold(
-      backgroundColor: Colors.deepPurple,
-      body: Padding(
-        padding: EdgeInsets.all(10),
-        child: Center(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              TextFormField(
-                autofocus: true,
-                keyboardType: TextInputType.text,
-                style: new TextStyle(color: Colors.white, fontSize: 20),
-                decoration: InputDecoration(
-                  labelText: "Login",
-                  labelStyle: TextStyle(color: Colors.white)),
-              ),
-              TextFormField(
-                obscureText: true,
-                autofocus: true,
-                keyboardType: TextInputType.text,
-                style: new TextStyle(color: Colors.white, fontSize: 20),
-                decoration: InputDecoration(
-                  labelText: "Password",
-                  labelStyle: TextStyle(color: Colors.white))
-              ),
-              Divider(),
-              ButtonTheme(
-                height: 60.0,
-                child: RaisedButton(
-                  onPressed: () => {},
-                  child: Text(
-                    "Login",
-                    style: TextStyle(color: Colors.deepPurple),
-                  ),
-                  color:  Colors.white,
+      body: Container(
+        padding: EdgeInsets.only(
+          top: 60, 
+          left: 40, 
+          right: 40,
+        ),
+        color: Colors.amber[300],
+        child: ListView(
+          children: <Widget>[
+            SizedBox(
+              width: 128,
+              height: 128,
+              child:  Image.asset("assets/logo.png"),
+            ),
+            SizedBox(
+              height: 30,
+            ),
+            TextFormField(
+              autofocus: true,
+              keyboardType: TextInputType.emailAddress,
+              decoration: InputDecoration(
+                labelText: "E-mail",
+                labelStyle: TextStyle(
+                  color: Colors.black38,
+                  fontWeight: FontWeight.w400,
+                  fontSize: 20,
                 ),
-              )
-            ],
-          ),
+              ),
+              style: TextStyle(
+                fontSize: 20,
+              ),
+            ),
+            SizedBox(
+              height: 30,
+            ),
+            TextFormField(
+              keyboardType: TextInputType.text,
+              obscureText: true,
+              decoration: InputDecoration(
+                labelText: "Senha",
+                labelStyle: TextStyle(
+                  color: Colors.black38,
+                  fontWeight: FontWeight.w400,
+                  fontSize: 20,
+                ),
+              ),
+              style: TextStyle(fontSize: 20),
+            ),
+            Container(
+              height: 40,
+              alignment: Alignment.centerRight,
+              child: FlatButton(
+                child: Text(
+                  "Recuperar Senha",
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 40,
+            ),
+            Container(
+              height: 60,
+              alignment: Alignment.centerLeft,
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                  stops: [0.3, 1],
+                  colors: [
+                    Color(0xFFFFF176),
+                    Color(0xFFFFEB3B),
+                  ],
+                ),
+                borderRadius: BorderRadius.all(
+                  Radius.circular(5),
+                ),
+              ),
+              child: SizedBox.expand(
+                child: FlatButton(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Expanded(
+                        flex: 1,
+                        child: Text(
+                          "Entrar",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black38,
+                            fontSize: 20,
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                    ],
+                  ),
+                  onPressed: () {
+                    Navigator.push(
+                      BuildContext,
+                      MaterialPageRoute(builder: (context) => HomePage())
+                    );
+                  },
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );
